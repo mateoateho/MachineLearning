@@ -1,0 +1,2444 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={MachineLearning},
+  pdfauthor={Mateo Atehortúa},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{MachineLearning}
+\author{Mateo Atehortúa}
+\date{15/10/2020}
+
+\begin{document}
+\maketitle
+
+\#\#Instalamos y Cargamos las librerias necesarias para realizar el
+procedimiento.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'tidyverse' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching packages -- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.1
+## v tidyr   1.1.1     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tibble' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'readr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'purrr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'stringr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'forcats' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ----- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(magrittr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'magrittr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'magrittr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     set_names
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:tidyr':
+## 
+##     extract
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(caTools)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caTools' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(rsample)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'rsample' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'caret'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(h2o)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'h2o' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## ----------------------------------------------------------------------
+## 
+## Your next step is to start H2O:
+##     > h2o.init()
+## 
+## For H2O package documentation, ask for help:
+##     > ??h2o
+## 
+## After starting H2O, you can use the Web UI at http://localhost:54321
+## For more information visit https://docs.h2o.ai
+## 
+## ----------------------------------------------------------------------
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'h2o'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     cor, sd, var
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     %*%, %in%, &&, ||, apply, as.factor, as.numeric, colnames,
+##     colnames<-, ifelse, is.character, is.factor, is.numeric, log,
+##     log10, log1p, log2, round, signif, trunc
+\end{verbatim}
+
+\hypertarget{a-travuxe9s-de-la-funciuxf3n-read.csv-leemos-los-datos-descargados-para-resolver-el-problema.}{%
+\subsection{A través de la función read.csv, leemos los datos
+descargados para resolver el
+problema.}\label{a-travuxe9s-de-la-funciuxf3n-read.csv-leemos-los-datos-descargados-para-resolver-el-problema.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DataStudents <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Student-Complete.csv"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{";"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{despuuxe9s-de-lo-anterior-utilizaremos-algunas-funciones-para-conocer-los-datos-descargados.}{%
+\subsection{Después de lo anterior utilizaremos algunas funciones para
+conocer los datos
+descargados.}\label{despuuxe9s-de-lo-anterior-utilizaremos-algunas-funciones-para-conocer-los-datos-descargados.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(DataStudents)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1044   31
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(DataStudents)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   school sex age address Pstatus Medu Fedu     Mjob     Fjob     reason
+## 1     GP   F  18       U       A    4    4  at_home  teacher     course
+## 2     GP   F  17       U       T    1    1  at_home    other     course
+## 3     GP   F  15       U       T    1    1  at_home    other      other
+## 4     GP   F  15       U       T    4    2   health services       home
+## 5     GP   F  16       U       T    3    3    other    other       home
+## 6     GP   M  16       U       T    4    3 services    other reputation
+##   guardian traveltime studytime schoolsup famsup paid activities nursery higher
+## 1   mother          2         2       yes     no   no         no     yes    yes
+## 2   father          1         2        no    yes   no         no      no    yes
+## 3   mother          1         2       yes     no  yes         no     yes    yes
+## 4   mother          1         3        no    yes  yes        yes     yes    yes
+## 5   father          1         2        no    yes  yes         no     yes    yes
+## 6   mother          1         2        no    yes  yes        yes     yes    yes
+##   internet romantic famrel freetime goout Dalc Walc health absences G1 G2 G3
+## 1       no       no      4        3     4    1    1      3        6  5  6  6
+## 2      yes       no      5        3     3    1    1      3        4  5  5  6
+## 3      yes       no      4        3     2    2    3      3       10  7  8 10
+## 4      yes      yes      3        2     2    1    1      5        2 15 14 15
+## 5       no       no      4        3     2    1    2      5        4  6 10 10
+## 6      yes       no      5        4     2    1    2      5       10 15 15 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ DataStudents, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ G1, }\DataTypeTok{y =}\NormalTok{ G2)) }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Calificaciones Estudiantes"}\NormalTok{, }\DataTypeTok{subtitle =} \StringTok{"Respecto a la Escuela"}\NormalTok{,}
+                                                        \DataTypeTok{x =} \StringTok{"Primer Periodo"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Segundo Periodo"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Escuela"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ school), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MachineLearning_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ DataStudents, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ G1, }\DataTypeTok{y =}\NormalTok{ G3)) }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Calificaciones Estudiantes"}\NormalTok{, }\DataTypeTok{subtitle =} \StringTok{"Respecto a la Escuela"}\NormalTok{,}
+                                                        \DataTypeTok{x =} \StringTok{"Primer Periodo"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Final"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Materia"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ school), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MachineLearning_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ DataStudents, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ G2, }\DataTypeTok{y =}\NormalTok{ G3)) }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Calificaciones Estudiantes"}\NormalTok{, }\DataTypeTok{subtitle =} \StringTok{"Respecto a la Escuela"}\NormalTok{,}
+                                                        \DataTypeTok{x =} \StringTok{"Segundo Periodo"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Final"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Materia"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ school), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MachineLearning_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\hypertarget{entrenamiento-del-modelo}{%
+\subsection{Entrenamiento del Modelo}\label{entrenamiento-del-modelo}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sampleSplit <-}\StringTok{ }\KeywordTok{sample.split}\NormalTok{(}\DataTypeTok{Y=}\NormalTok{DataStudents}\OperatorTok{$}\NormalTok{G3, }\DataTypeTok{SplitRatio=}\FloatTok{0.7}\NormalTok{)}
+\NormalTok{trainSet <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DataStudents, sampleSplit }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{testSet <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DataStudents, sampleSplit }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{corremos-regresiuxf3n-todas-la-variables}{%
+\subsection{Corremos Regresión (Todas la
+variables)}\label{corremos-regresiuxf3n-todas-la-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ trainSet, G3 }\OperatorTok{~}\NormalTok{.)}
+\KeywordTok{summary}\NormalTok{(modelo1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = G3 ~ ., data = trainSet)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.3831 -0.4826  0.1328  0.7909  3.2529 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)      -0.220846   1.165929  -0.189  0.84982    
+## schoolMS          0.197099   0.169690   1.162  0.24583    
+## sexM              0.045679   0.141704   0.322  0.74728    
+## age              -0.081619   0.057505  -1.419  0.15625    
+## addressU          0.039017   0.156430   0.249  0.80311    
+## PstatusT         -0.118637   0.200293  -0.592  0.55383    
+## Medu             -0.023676   0.088444  -0.268  0.78901    
+## Fedu              0.007928   0.077989   0.102  0.91906    
+## Mjobhealth        0.026381   0.304064   0.087  0.93089    
+## Mjobother         0.070924   0.186278   0.381  0.70351    
+## Mjobservices      0.145942   0.217652   0.671  0.50275    
+## Mjobteacher       0.176119   0.288451   0.611  0.54169    
+## Fjobhealth        0.059399   0.398144   0.149  0.88145    
+## Fjobother        -0.128274   0.265544  -0.483  0.62920    
+## Fjobservices     -0.286044   0.277567  -1.031  0.30312    
+## Fjobteacher      -0.383764   0.381395  -1.006  0.31467    
+## reasonhome       -0.022076   0.160852  -0.137  0.89088    
+## reasonother      -0.003703   0.230079  -0.016  0.98716    
+## reasonreputation  0.017697   0.161597   0.110  0.91283    
+## guardianmother    0.103938   0.151675   0.685  0.49340    
+## guardianother     0.316552   0.285122   1.110  0.26728    
+## traveltime        0.117082   0.093121   1.257  0.20906    
+## studytime        -0.072107   0.079680  -0.905  0.36580    
+## schoolsupyes     -0.002614   0.197771  -0.013  0.98946    
+## famsupyes         0.059926   0.132004   0.454  0.64999    
+## paidyes          -0.388698   0.154818  -2.511  0.01228 *  
+## activitiesyes    -0.202033   0.126296  -1.600  0.11013    
+## nurseryyes       -0.210741   0.155283  -1.357  0.17518    
+## higheryes         0.121780   0.263146   0.463  0.64366    
+## internetyes      -0.032918   0.164663  -0.200  0.84161    
+## romanticyes      -0.018858   0.132728  -0.142  0.88706    
+## famrel            0.160560   0.068577   2.341  0.01950 *  
+## freetime         -0.046227   0.065064  -0.710  0.47764    
+## goout             0.041550   0.063525   0.654  0.51329    
+## Dalc             -0.076337   0.090031  -0.848  0.39679    
+## Walc              0.028242   0.068202   0.414  0.67894    
+## health           -0.007188   0.044508  -0.161  0.87175    
+## absences          0.036217   0.011137   3.252  0.00120 ** 
+## G1                0.136293   0.042267   3.225  0.00132 ** 
+## G2                0.971253   0.037337  26.013  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.612 on 691 degrees of freedom
+## Multiple R-squared:  0.8362, Adjusted R-squared:  0.8269 
+## F-statistic: 90.43 on 39 and 691 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelResiduals <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{residuals}\NormalTok{(modelo1))}
+
+\KeywordTok{ggplot}\NormalTok{(modelResiduals, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{residuals}\NormalTok{(modelo1))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{fill=}\StringTok{'deepskyblue'}\NormalTok{, }\DataTypeTok{color=}\StringTok{'black'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{MachineLearning_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{preds <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelo1, testSet)}
+
+\NormalTok{modelEval <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (testSet}\OperatorTok{$}\NormalTok{G3, preds) }
+\KeywordTok{colnames}\NormalTok{ (modelEval) <-}\StringTok{ }\KeywordTok{c}\NormalTok{ (}\StringTok{'Actual'}\NormalTok{, }\StringTok{'Predicted'}\NormalTok{) }
+\NormalTok{modelEval <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{ (modelEval)}
+\NormalTok{modelEval}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Actual   Predicted
+## 5        10  9.02811013
+## 6        15 15.44843032
+## 12       12 12.22155771
+## 17       14 13.62654384
+## 23       16 15.27192425
+## 27       11 12.04834285
+## 29       11 11.35703026
+## 31       12 10.47251581
+## 32       17 16.58353515
+## 36        6  6.41878672
+## 43       18 18.61772313
+## 44       11  7.79425766
+## 47       11 12.23679309
+## 50        7  6.46686101
+## 51       13 12.94809561
+## 55       13 12.96118957
+## 60       16 16.59457761
+## 64        9  8.45670155
+## 69        8  8.50774222
+## 70       16 17.03425913
+## 76       10  8.60942993
+## 83        6  5.76482494
+## 84       15 15.33499316
+## 87        6  6.95113551
+## 91        8  6.16280991
+## 94       10  9.66921907
+## 96       10  8.86679088
+## 99       14 14.44406436
+## 102      17 16.94982911
+## 105      18 18.43408658
+## 108      18 18.46483897
+## 118      13 13.97931859
+## 126      12 13.20895649
+## 133      12 13.04656632
+## 134      11 11.74394686
+## 135       0  0.37035345
+## 136       0  0.32344352
+## 140      15 16.37005392
+## 149       0  5.16228326
+## 150      10  9.39915363
+## 151       0  4.11335429
+## 155      12 10.73207444
+## 164      10  9.83197927
+## 172      16 14.82836119
+## 174       0  6.56115345
+## 176       9  8.46736064
+## 179       9  8.05960378
+## 182      12 12.70024779
+## 183      17 17.20485588
+## 184       8 10.72876475
+## 186      11 12.25881156
+## 196      15 14.76588532
+## 198      10  8.66274923
+## 200      10  8.18753983
+## 203      10  8.84623331
+## 215      10  9.90309585
+## 235       6  7.06051741
+## 236      10  9.43801480
+## 239      11 10.74231049
+## 240       0  6.16485913
+## 243       0  0.02570538
+## 248       8  7.58504582
+## 253       8  8.46230203
+## 255      12 11.66983261
+## 266      17 17.75132853
+## 268      11  9.85779549
+## 277       9 11.53375957
+## 278       9  8.96963609
+## 279       8  7.72375975
+## 283      12 11.54550937
+## 287      19 18.46013039
+## 289      14 13.97556311
+## 291      11 10.93328539
+## 295      14 13.13461072
+## 298       8  8.14300598
+## 300      16 14.54870044
+## 303      14 12.12261580
+## 305      13 14.99450085
+## 311       0  8.73522212
+## 312      13 12.86168794
+## 320      11 10.54014010
+## 321      13 13.79566017
+## 326      11 11.33728721
+## 331       8  7.46812563
+## 334       0  7.70295813
+## 337      13 13.68455029
+## 339      17 15.62809201
+## 340      10  9.51310058
+## 347      16 15.69421650
+## 349      15 14.39226954
+## 350      13 13.24540888
+## 353       8  6.75495204
+## 359      10 10.05729057
+## 360      16 16.68535427
+## 366      10  9.75039132
+## 367      13 12.78774539
+## 368       0  5.67690675
+## 372      12 11.83288407
+## 374       5  4.87047013
+## 377      15 14.61881926
+## 379      15 15.15499827
+## 382       7  5.98471722
+## 383      10 10.82782027
+## 384       0  4.52811855
+## 392      16 16.47678271
+## 394      10 12.36973956
+## 396      11  9.43332754
+## 397      11 10.99160176
+## 399      14 13.73045077
+## 406      14 14.69181879
+## 407      13 12.07668981
+## 410      15 14.59533075
+## 411      17 17.92851143
+## 412      14 13.18885620
+## 417      12 11.90554701
+## 423      11 10.73671894
+## 424      13 12.00344506
+## 432      14 14.23005599
+## 433      13 12.71952084
+## 436      10 11.59319806
+## 441      11 10.76925341
+## 447      16 14.62805823
+## 448       9  9.59238820
+## 452      15 14.38669085
+## 456      16 15.83901081
+## 457      16 10.13773854
+## 460      12 11.90569636
+## 466      11 11.25098373
+## 468      11 11.54652674
+## 469      14 13.20765697
+## 474      10  8.46735885
+## 475      11 11.28666932
+## 483      15 15.64548334
+## 486      11 10.78154120
+## 489      14 14.28795036
+## 491      13 12.67074399
+## 493      12 12.37988318
+## 497      16 15.97857582
+## 502      10 10.24476418
+## 506      14 14.32761167
+## 509      18 18.10768776
+## 515      14 13.34469152
+## 516      14 14.33952875
+## 519      13 13.02968055
+## 524      15 14.16810885
+## 526      12 10.64359043
+## 527       8  9.16297388
+## 529      13 12.59336257
+## 530      12 12.12202291
+## 535      15 14.33844394
+## 543      14 14.23596955
+## 551       6  7.91782133
+## 554      11 10.66112880
+## 560      10  9.76692448
+## 563      13 12.94716745
+## 565      10  7.96638539
+## 570       9  7.00778928
+## 576      11  9.66168102
+## 580      10  9.13175055
+## 585      11 10.65369706
+## 589      13 10.73507595
+## 590      11  9.50680501
+## 591      13 11.90896508
+## 594      16 15.20445217
+## 599      10  8.93696774
+## 600      13 12.25847395
+## 601      12 10.80151711
+## 606      14 13.38399643
+## 607      12 11.41998258
+## 609      11  9.82007730
+## 611      12 12.03427285
+## 615       8  8.26841600
+## 620      12 11.96529978
+## 624      11 11.59091789
+## 625      15 16.43450559
+## 628      13 13.16049800
+## 632      14 12.63327422
+## 633      10  8.53696075
+## 635       8  7.53980755
+## 637      11 11.15567169
+## 638      11  9.66351842
+## 640      12 11.82258390
+## 646      16 16.07954373
+## 647      10  9.77715537
+## 650      10  8.31734838
+## 658       8 10.12191213
+## 659       8  6.88062397
+## 660      10  9.48914673
+## 662      14 14.54199684
+## 664      12 12.21559373
+## 667      12 10.70818527
+## 671      11 10.86202419
+## 673      11  9.99555706
+## 675       5  7.57647113
+## 677      11 12.29715284
+## 678       7  7.86413951
+## 679      10 11.78930690
+## 684      13 12.46417837
+## 685      17 14.95645789
+## 687      11 10.12370968
+## 689      14 12.24148766
+## 691      14 13.18085976
+## 693      10  9.99010871
+## 696      15 15.24530538
+## 697      11 10.14347649
+## 698      12 10.84567769
+## 700      13 11.32543535
+## 703      14 10.85769789
+## 706      10  9.03970307
+## 709      13 13.49366212
+## 710      18 17.32108576
+## 712      16 16.86121102
+## 714      10  9.63332742
+## 716      13 11.81941830
+## 719      10  9.76015697
+## 720      11 10.39572711
+## 722      13 13.85211093
+## 726      14 13.08747779
+## 728      18 18.66774326
+## 734      19 19.62187178
+## 735      15 15.17607924
+## 737      13 13.01723367
+## 741      15 14.88539627
+## 742      13 12.76719298
+## 747      15 15.35366907
+## 752      17 16.02372857
+## 754      15 12.26900049
+## 755      17 15.10312408
+## 762      13 12.38651532
+## 765      11  9.48619084
+## 766       9  8.53409136
+## 767      10  9.79116413
+## 771      15 14.09272005
+## 772      14 14.02335147
+## 776      13 12.07037514
+## 778      11 11.56953993
+## 788      15 12.93954204
+## 789      15 14.27560136
+## 794      14 11.76234025
+## 795      17 16.08077662
+## 798      13 11.59462098
+## 803      12 10.61132186
+## 804      12 10.94310659
+## 820      12 12.22281269
+## 828       7  5.76250284
+## 830      11  8.69951958
+## 833      12 11.34038337
+## 836       0 -0.14951728
+## 838      14 13.11703837
+## 842      11 11.28509612
+## 843       9  9.97671690
+## 847      11 11.12409138
+## 849       8  7.53277672
+## 851       9 10.02648528
+## 852      15 14.55550279
+## 861       8  7.73403493
+## 867      12 11.47687471
+## 875      10  8.90909869
+## 877      11  9.95201688
+## 880       8  7.20937487
+## 882      10  9.51957074
+## 884       9  8.16577991
+## 885      10  8.42808201
+## 889      10  8.99742944
+## 890       9  8.53025179
+## 897      13 12.86853572
+## 900      13 13.13106761
+## 901      11 11.32994895
+## 904       9  9.67227951
+## 909       8  5.77443709
+## 912      16 15.98390217
+## 913      15 14.79985640
+## 916       8  8.05620580
+## 917      10  9.37634578
+## 922      14 14.35464511
+## 924       9  8.97930327
+## 926       9  9.68677684
+## 931      10 11.59663740
+## 935      10  9.71425401
+## 936      11 11.07809264
+## 940      12 11.36191052
+## 944      11 10.20394989
+## 946      13 13.53709344
+## 951      13 14.64307390
+## 954      10 12.63358796
+## 956      10  9.19586339
+## 957      10  9.37064374
+## 959       0 -0.73518530
+## 960      10  9.42795760
+## 961       9 10.01411390
+## 963       0 -1.06107654
+## 968       7  4.81400771
+## 975       9  9.55148630
+## 978       7  6.96417681
+## 983       8  5.17839278
+## 985      10  9.50624117
+## 989      14 13.29491611
+## 991      17 18.00900429
+## 1000     10  9.74372576
+## 1002     18 18.65665918
+## 1004     11  9.88220274
+## 1007     15 14.53482819
+## 1008     11 10.97797148
+## 1010     12 11.66613626
+## 1013     18 17.79290077
+## 1018      9  9.33293698
+## 1024     12 10.90951562
+## 1027     12 11.25699573
+## 1028      9  7.91600797
+## 1033      0  6.77488563
+## 1036      0  6.21344480
+## 1037     15 17.44562450
+## 1044     11 11.40706096
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RMSE <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean}\NormalTok{(((modelEval}\OperatorTok{$}\NormalTok{Actual }\OperatorTok{-}\StringTok{ }\NormalTok{modelEval}\OperatorTok{$}\NormalTok{Predicted)}\OperatorTok{^}\DecValTok{2}\NormalTok{)))}
+\NormalTok{RMSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.535754
+\end{verbatim}
+
+\hypertarget{corremos-regresiuxf3n-algunas-variables}{%
+\subsection{Corremos Regresión (Algunas
+Variables)}\label{corremos-regresiuxf3n-algunas-variables}}
+
+\hypertarget{entrenamiento-del-modelo-1}{%
+\subsection{Entrenamiento del Modelo}\label{entrenamiento-del-modelo-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DataStudents2 <-}\StringTok{ }\KeywordTok{select}\NormalTok{(DataStudents, }\KeywordTok{c}\NormalTok{(}\StringTok{"schoolsup"}\NormalTok{, }\StringTok{"studytime"}\NormalTok{, }\StringTok{"paid"}\NormalTok{, }\StringTok{"famsup"}\NormalTok{,}\StringTok{"G1"}\NormalTok{, }\StringTok{"G2"}\NormalTok{,}\StringTok{"G3"}\NormalTok{, }\StringTok{"famrel"}\NormalTok{, }\StringTok{"activities"}\NormalTok{, }\StringTok{"absences"}\NormalTok{ ))}
+
+\NormalTok{sampleSplit2 <-}\StringTok{ }\KeywordTok{sample.split}\NormalTok{(}\DataTypeTok{Y=}\NormalTok{DataStudents2}\OperatorTok{$}\NormalTok{G3, }\DataTypeTok{SplitRatio=}\FloatTok{0.7}\NormalTok{)}
+\NormalTok{trainSet2 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DataStudents2, sampleSplit }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{testSet2 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DataStudents2, sampleSplit }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo2 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ trainSet2, G3 }\OperatorTok{~}\NormalTok{.)}
+\KeywordTok{summary}\NormalTok{(modelo2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = G3 ~ ., data = trainSet2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.8126 -0.4592  0.1245  0.8197  3.2105 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   -1.493309   0.373656  -3.996 7.09e-05 ***
+## schoolsupyes   0.001383   0.181364   0.008  0.99392    
+## studytime     -0.079096   0.073459  -1.077  0.28196    
+## paidyes       -0.419360   0.147682  -2.840  0.00464 ** 
+## famsupyes      0.052299   0.123961   0.422  0.67322    
+## G1             0.133020   0.040311   3.300  0.00102 ** 
+## G2             0.970796   0.035834  27.092  < 2e-16 ***
+## famrel         0.151904   0.064060   2.371  0.01799 *  
+## activitiesyes -0.233958   0.118991  -1.966  0.04966 *  
+## absences       0.033463   0.010187   3.285  0.00107 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.594 on 721 degrees of freedom
+## Multiple R-squared:  0.8328, Adjusted R-squared:  0.8308 
+## F-statistic: 399.1 on 9 and 721 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{preds2 <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelo2, testSet2)}
+
+\NormalTok{modelEval2 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (testSet2}\OperatorTok{$}\NormalTok{G3, preds2) }
+\KeywordTok{colnames}\NormalTok{ (modelEval2) <-}\StringTok{ }\KeywordTok{c}\NormalTok{ (}\StringTok{'Actual'}\NormalTok{, }\StringTok{'Predicted'}\NormalTok{) }
+\NormalTok{modelEval2 <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{ (modelEval2)}
+\NormalTok{modelEval2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Actual  Predicted
+## 5        10  9.2289837
+## 6        15 15.3988677
+## 12       12 11.9608671
+## 17       14 13.6452773
+## 23       16 15.3463244
+## 27       11 11.9808681
+## 29       11 11.2035702
+## 31       12 10.6168937
+## 32       17 16.5685347
+## 36        6  6.5613813
+## 43       18 18.8430923
+## 44       11  8.0713248
+## 47       11 12.2189310
+## 50        7  6.5694765
+## 51       13 12.8725679
+## 55       13 12.9190785
+## 60       16 16.6033769
+## 64        9  8.2597691
+## 69        8  8.4586858
+## 70       16 16.9128314
+## 76       10  8.4902164
+## 83        6  5.6795962
+## 84       15 15.1457930
+## 87        6  7.0019970
+## 91        8  6.2366698
+## 94       10  9.6781808
+## 96       10  8.7524080
+## 99       14 14.2082974
+## 102      17 17.3272142
+## 105      18 18.1096494
+## 108      18 18.5168390
+## 118      13 14.2735623
+## 126      12 13.5381067
+## 133      12 13.2877063
+## 134      11 11.6937066
+## 135       0  0.3574994
+## 136       0  0.1585827
+## 140      15 16.4623113
+## 149       0  5.6915227
+## 150      10  8.8365353
+## 151       0  4.3835038
+## 155      12 11.2308697
+## 164      10 10.2922007
+## 172      16 14.7132224
+## 174       0  6.5818899
+## 176       9  8.5040124
+## 179       9  8.2847477
+## 182      12 12.5863113
+## 183      17 17.5582139
+## 184       8 10.7346117
+## 186      11 12.4218011
+## 196      15 15.1463788
+## 198      10  8.4843340
+## 200      10  8.5233982
+## 203      10  8.6572487
+## 215      10  9.9937250
+## 235       6  7.0322301
+## 236      10  9.3299765
+## 239      11 10.8932929
+## 240       0  6.8347309
+## 243       0 -0.2487221
+## 248       8  8.2870045
+## 253       8  8.5524415
+## 255      12 11.7489229
+## 266      17 17.5549843
+## 268      11  9.8746994
+## 277       9 11.5331768
+## 278       9  8.9005117
+## 279       8  7.9375198
+## 283      12 11.6280635
+## 287      19 18.5459611
+## 289      14 14.0109226
+## 291      11 10.9981822
+## 295      14 13.1782344
+## 298       8  8.0202489
+## 300      16 15.0700138
+## 303      14 12.1548117
+## 305      13 15.0301548
+## 311       0  8.6565020
+## 312      13 13.0375966
+## 320      11 10.7979559
+## 321      13 13.8602071
+## 326      11 11.5901814
+## 331       8  7.6467383
+## 334       0  7.5526858
+## 337      13 13.4937435
+## 339      17 15.9266260
+## 340      10  9.6280446
+## 347      16 16.0203483
+## 349      15 14.5672011
+## 350      13 13.2018977
+## 353       8  7.1291819
+## 359      10 10.0553186
+## 360      16 16.9560212
+## 366      10  9.6091613
+## 367      13 12.8072679
+## 368       0  5.5759697
+## 372      12 12.0464138
+## 374       5  4.7699266
+## 377      15 14.3821577
+## 379      15 15.0939964
+## 382       7  5.7244829
+## 383      10 10.9310596
+## 384       0  4.6873112
+## 392      16 16.2268088
+## 394      10 12.1479839
+## 396      11  9.7701016
+## 397      11 11.1031793
+## 399      14 13.9968822
+## 406      14 14.3768611
+## 407      13 11.8270166
+## 410      15 14.3827435
+## 411      17 18.0531599
+## 412      14 13.2276923
+## 417      12 11.9328262
+## 423      11 10.8733806
+## 424      13 11.8211008
+## 432      14 14.3006896
+## 433      13 12.8750129
+## 436      10 11.2999317
+## 441      11 10.6511896
+## 447      16 14.7278802
+## 448       9  9.3883301
+## 452      15 14.3609023
+## 456      16 16.2647273
+## 457      16 10.0449996
+## 460      12 12.1023535
+## 466      11 11.3251648
+## 468      11 11.3328358
+## 469      14 13.3027665
+## 474      10  8.7892797
+## 475      11 11.4480807
+## 483      15 15.5383563
+## 486      11 10.8721796
+## 489      14 14.3136906
+## 491      13 12.5298428
+## 493      12 12.3872275
+## 497      16 16.3564183
+## 502      10 10.1755196
+## 506      14 14.4074128
+## 509      18 18.1158280
+## 515      14 13.4328623
+## 516      14 14.2576368
+## 519      13 13.0520883
+## 524      15 14.3704763
+## 526      12 10.9382746
+## 527       8  9.3283513
+## 529      13 12.1671010
+## 530      12 12.3813451
+## 535      15 14.1496161
+## 543      14 14.3224344
+## 551       6  7.9683443
+## 554      11 11.0654125
+## 560      10  9.9071696
+## 563      13 13.4385021
+## 565      10  8.1634291
+## 570       9  7.3282188
+## 576      11  9.8612554
+## 580      10  8.7698439
+## 585      11 10.7311140
+## 589      13 10.7828272
+## 590      11  9.5082240
+## 591      13 11.8349302
+## 594      16 15.2446254
+## 599      10  8.9393316
+## 600      13 12.4026839
+## 601      12 11.1490584
+## 606      14 13.6705746
+## 607      12 11.2460074
+## 609      11 10.1795951
+## 611      12 12.0224624
+## 615       8  8.7797586
+## 620      12 11.9959080
+## 624      11 11.7151868
+## 625      15 16.4180575
+## 628      13 13.2860459
+## 632      14 13.0032996
+## 633      10  8.8056785
+## 635       8  7.8384400
+## 637      11 11.1692743
+## 638      11  9.7479048
+## 640      12 12.0820875
+## 646      16 16.3832153
+## 647      10 10.0742020
+## 650      10  8.6592684
+## 658       8  9.6422351
+## 659       8  7.5031532
+## 660      10  9.4036926
+## 662      14 14.4947528
+## 664      12 12.1023035
+## 667      12 10.9498596
+## 671      11 10.5681456
+## 673      11 10.3134456
+## 675       5  8.2861743
+## 677      11 12.1479839
+## 678       7  8.0004201
+## 679      10 11.1714872
+## 684      13 12.3211324
+## 685      17 15.1074110
+## 687      11 10.0271890
+## 689      14 12.1759413
+## 691      14 13.2258332
+## 693      10 10.0922552
+## 696      15 15.4806773
+## 697      11 10.1135000
+## 698      12 10.8708469
+## 700      13 11.8081332
+## 703      14 11.0160380
+## 706      10  9.2112898
+## 709      13 13.4249486
+## 710      18 17.3213318
+## 712      16 16.7372274
+## 714      10  9.7914599
+## 716      13 12.0507907
+## 719      10  9.8394142
+## 720      11 10.2560944
+## 722      13 13.9871476
+## 726      14 13.2733727
+## 728      18 18.7980083
+## 734      19 19.5378044
+## 735      15 15.2714855
+## 737      13 13.0202040
+## 741      15 15.0132751
+## 742      13 13.2518001
+## 747      15 15.3773785
+## 752      17 16.3962163
+## 754      15 12.4491005
+## 755      17 15.3195274
+## 762      13 12.4074935
+## 765      11  9.6270626
+## 766       9  8.0577713
+## 767      10  9.9586385
+## 771      15 14.1785408
+## 772      14 14.0964869
+## 776      13 12.2260775
+## 778      11 11.6138902
+## 788      15 13.2250030
+## 789      15 14.5894017
+## 794      14 12.0420908
+## 795      17 16.5577904
+## 798      13 11.8081332
+## 803      12 10.9185295
+## 804      12 11.0184816
+## 820      12 12.0202496
+## 828       7  5.8623097
+## 830      11  8.3094697
+## 833      12 10.9766461
+## 836       0 -0.1424988
+## 838      14 13.1429491
+## 842      11 11.0683371
+## 843       9  9.9929783
+## 847      11 10.9650716
+## 849       8  7.5701759
+## 851       9  9.9149371
+## 852      15 14.4807229
+## 861       8  7.8872651
+## 867      12 11.1163789
+## 875      10  8.9217475
+## 877      11  9.9775218
+## 880       8  7.0149980
+## 882      10  9.3727952
+## 884       9  8.6640447
+## 885      10  8.6025777
+## 889      10  8.5991038
+## 890       9  8.5234817
+## 897      13 12.5807882
+## 900      13 13.2455117
+## 901      11 10.9955294
+## 904       9  9.1548750
+## 909       8  5.5382864
+## 912      16 16.1171747
+## 913      15 14.4065826
+## 916       8  7.7736775
+## 917      10  9.3946729
+## 922      14 14.3890789
+## 924       9  8.9217111
+## 926       9  9.7603533
+## 931      10 11.1703853
+## 935      10  9.4915868
+## 936      11 11.0784605
+## 940      12 11.2950796
+## 944      11  9.9602637
+## 946      13 13.2250030
+## 951      13 14.4184190
+## 954      10 12.6376649
+## 956      10  8.9209174
+## 957      10  9.0425971
+## 959       0 -0.7233165
+## 960      10  9.3025215
+## 961       9  9.8394142
+## 963       0 -0.7365162
+## 968       7  4.2574299
+## 975       9  9.9403515
+## 978       7  7.1962868
+## 983       8  5.3269532
+## 985      10  9.8262145
+## 989      14 13.1727040
+## 991      17 17.8707181
+## 1000     10  9.9281807
+## 1002     18 18.6666132
+## 1004     11  9.9470641
+## 1007     15 14.4977576
+## 1008     11 10.4979032
+## 1010     12 11.6678145
+## 1013     18 18.0598374
+## 1018      9  9.2092701
+## 1024     12 10.7678153
+## 1027     12 11.0198261
+## 1028      9  7.8397726
+## 1033      0  6.5279656
+## 1036      0  6.4944666
+## 1037     15 17.3947358
+## 1044     11 11.1780182
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RMSE2 <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean}\NormalTok{(((modelEval2}\OperatorTok{$}\NormalTok{Actual }\OperatorTok{-}\StringTok{ }\NormalTok{modelEval2}\OperatorTok{$}\NormalTok{Predicted)}\OperatorTok{^}\DecValTok{2}\NormalTok{)))}
+\NormalTok{RMSE2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.53372
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DataStudents3 <-}\StringTok{ }\KeywordTok{select}\NormalTok{(DataStudents, }\KeywordTok{c}\NormalTok{(}\StringTok{"paid"}\NormalTok{,}\StringTok{"G1"}\NormalTok{, }\StringTok{"G2"}\NormalTok{,}\StringTok{"G3"}\NormalTok{))}
+
+\NormalTok{sampleSplit3 <-}\StringTok{ }\KeywordTok{sample.split}\NormalTok{(}\DataTypeTok{Y=}\NormalTok{DataStudents2}\OperatorTok{$}\NormalTok{G3, }\DataTypeTok{SplitRatio=}\FloatTok{0.7}\NormalTok{)}
+\NormalTok{trainSet3 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DataStudents3, sampleSplit }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{testSet3 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DataStudents3, sampleSplit }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo3 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ trainSet3, G3 }\OperatorTok{~}\StringTok{ }\NormalTok{G1 }\OperatorTok{+}\StringTok{ }\NormalTok{G2 }\OperatorTok{+}\StringTok{ }\NormalTok{paid)}
+\KeywordTok{summary}\NormalTok{(modelo3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = G3 ~ G1 + G2 + paid, data = trainSet3)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.0635  -0.3802   0.0750   0.7833   3.0271 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.85891    0.23707  -3.623 0.000312 ***
+## G1           0.12353    0.04001   3.087 0.002096 ** 
+## G2           0.96871    0.03609  26.845  < 2e-16 ***
+## paidyes     -0.40282    0.14608  -2.758 0.005968 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.611 on 727 degrees of freedom
+## Multiple R-squared:  0.828,  Adjusted R-squared:  0.8273 
+## F-statistic:  1166 on 3 and 727 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{preds3 <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelo3, testSet3)}
+
+\NormalTok{modelEval3 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (testSet3}\OperatorTok{$}\NormalTok{G3, preds3) }
+\KeywordTok{colnames}\NormalTok{ (modelEval3) <-}\StringTok{ }\KeywordTok{c}\NormalTok{ (}\StringTok{'Actual'}\NormalTok{, }\StringTok{'Predicted'}\NormalTok{) }
+\NormalTok{modelEval3 <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{ (modelEval3)}
+\NormalTok{modelEval3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Actual    Predicted
+## 5        10  9.166569000
+## 6        15 15.121887911
+## 12       12 12.000931722
+## 17       14 13.906118533
+## 23       16 15.524711876
+## 27       11 11.845163721
+## 29       11 11.155746288
+## 31       12 10.505866361
+## 32       17 16.740481254
+## 36        6  6.910308683
+## 43       18 18.924964048
+## 44       11  7.879022098
+## 47       11 12.124459703
+## 50        7  6.786780701
+## 51       13 12.813877136
+## 55       13 12.566821173
+## 60       16 16.493425291
+## 64        9  8.691967512
+## 69        8  8.444911549
+## 70       16 16.616953272
+## 76       10  8.568439530
+## 83        6  5.415243322
+## 84       15 15.121887911
+## 87        6  6.910308683
+## 91        8  6.383956737
+## 94       10  9.784208909
+## 96       10  9.290096982
+## 99       14 14.061886534
+## 102      17 17.585666687
+## 105      18 18.151556138
+## 108      18 18.554380103
+## 118      13 14.308942497
+## 126      12 13.340229082
+## 133      12 12.969645137
+## 134      11 11.279274270
+## 135       0  0.252842759
+## 136       0  0.499898722
+## 140      15 16.616953272
+## 149       0  5.818067286
+## 150      10  8.847735513
+## 151       0  4.725825889
+## 155      12 11.155746288
+## 164      10 10.063504891
+## 172      16 14.874831948
+## 174       0  6.910308683
+## 176       9  8.691967512
+## 179       9  8.126078061
+## 182      12 12.813877136
+## 183      17 17.585666687
+## 184       8  8.971263495
+## 186      11 12.247987685
+## 196      15 15.401183894
+## 198      10  8.568439530
+## 200      10  8.568439530
+## 203      10  8.568439530
+## 215      10  9.413624964
+## 235       6  6.631012700
+## 236      10  9.218319458
+## 239      11 11.402802252
+## 240       0  6.786780701
+## 243       0 -0.117741186
+## 248       8  7.631966134
+## 253       8  8.600679550
+## 255      12 11.753875758
+## 266      17 17.306370705
+## 268      11  9.907736891
+## 277       9  9.094791476
+## 278       9  8.568439530
+## 279       8  8.002550080
+## 283      12 11.845163721
+## 287      19 18.398612102
+## 289      14 14.153174496
+## 291      11 10.876450306
+## 295      14 13.060933099
+## 298       8  7.723254097
+## 300      16 15.245415893
+## 303      14 12.215747666
+## 305      13 14.555998460
+## 311       0  8.971263495
+## 312      13 12.495043649
+## 320      11 10.752922324
+## 321      13 12.937405118
+## 326      11 11.877403740
+## 331       8  8.002550080
+## 334       0  7.879022098
+## 337      13 13.060933099
+## 339      17 15.648239857
+## 340      10  9.537152946
+## 347      16 15.648239857
+## 349      15 14.874831948
+## 350      13 13.093173118
+## 353       8  6.910308683
+## 359      10 10.063504891
+## 360      16 16.864009236
+## 366      10  9.660680927
+## 367      13 12.937405118
+## 368       0  5.415243322
+## 372      12 12.092219684
+## 374       5  4.725825889
+## 377      15 14.153174496
+## 379      15 15.121887911
+## 382       7  5.818067286
+## 383      10 11.155746288
+## 384       0  4.725825889
+## 392      16 16.369897309
+## 394      10 12.124459703
+## 396      11  9.796938489
+## 397      11 10.908690325
+## 399      14 14.432470479
+## 406      14 14.432470479
+## 407      13 12.000931722
+## 410      15 14.432470479
+## 411      17 17.709194669
+## 412      14 13.340229082
+## 417      12 11.721635739
+## 423      11 11.155746288
+## 424      13 11.845163721
+## 432      14 14.432470479
+## 433      13 13.340229082
+## 436      10 11.155746288
+## 441      11 10.629394342
+## 447      16 14.679526442
+## 448       9  9.094791476
+## 452      15 14.555998460
+## 456      16 16.740481254
+## 457      16 10.063504891
+## 460      12 12.371515667
+## 466      11 11.402802252
+## 468      11 11.402802252
+## 469      14 13.340229082
+## 474      10  8.971263495
+## 475      11 11.279274270
+## 483      15 15.524711876
+## 486      11 10.908690325
+## 489      14 14.308942497
+## 491      13 12.937405118
+## 493      12 12.371515667
+## 497      16 16.616953272
+## 502      10 10.063504891
+## 506      14 14.308942497
+## 509      18 17.832722651
+## 515      14 13.463757064
+## 516      14 14.432470479
+## 519      13 13.216701100
+## 524      15 14.432470479
+## 526      12 11.032218307
+## 527       8  9.094791476
+## 529      13 12.124459703
+## 530      12 12.371515667
+## 535      15 14.308942497
+## 543      14 14.308942497
+## 551       6  7.033836664
+## 554      11 11.155746288
+## 560      10  9.939976910
+## 563      13 13.340229082
+## 565      10  8.002550080
+## 570       9  7.476198134
+## 576      11  9.939976910
+## 580      10  8.971263495
+## 585      11 11.032218307
+## 589      13 10.752922324
+## 590      11  9.784208909
+## 591      13 12.124459703
+## 594      16 15.401183894
+## 599      10  8.971263495
+## 600      13 12.247987685
+## 601      12 11.279274270
+## 606      14 13.340229082
+## 607      12 11.032218307
+## 609      11 10.187032873
+## 611      12 12.124459703
+## 615       8  8.444911549
+## 620      12 12.247987685
+## 624      11 11.279274270
+## 625      15 16.369897309
+## 628      13 13.216701100
+## 632      14 13.340229082
+## 633      10  8.691967512
+## 635       8  7.879022098
+## 637      11 11.032218307
+## 638      11  9.939976910
+## 640      12 12.495043649
+## 646      16 16.616953272
+## 647      10  9.939976910
+## 650      10  8.002550080
+## 658       8  8.971263495
+## 659       8  6.910308683
+## 660      10  9.218319458
+## 662      14 14.555998460
+## 664      12 12.247987685
+## 667      12 10.752922324
+## 671      11 10.310560855
+## 673      11 10.187032873
+## 675       5  7.755494116
+## 677      11 12.124459703
+## 678       7  7.755494116
+## 679      10 10.908690325
+## 684      13 12.247987685
+## 685      17 15.401183894
+## 687      11 10.187032873
+## 689      14 12.124459703
+## 691      14 13.093173118
+## 693      10  9.939976910
+## 696      15 15.524711876
+## 697      11 10.063504891
+## 698      12 11.032218307
+## 700      13 12.124459703
+## 703      14 11.155746288
+## 706      10  8.847735513
+## 709      13 13.340229082
+## 710      18 17.585666687
+## 712      16 16.493425291
+## 714      10  9.341847440
+## 716      13 12.495043649
+## 719      10 10.063504891
+## 720      11 10.063504891
+## 722      13 13.340229082
+## 726      14 13.216701100
+## 728      18 18.801436066
+## 734      19 19.770149481
+## 735      15 15.401183894
+## 737      13 13.463757064
+## 741      15 14.998359930
+## 742      13 13.216701100
+## 747      15 15.401183894
+## 752      17 16.493425291
+## 754      15 12.247987685
+## 755      17 15.524711876
+## 762      13 12.247987685
+## 765      11 10.063504891
+## 766       9  7.879022098
+## 767      10 10.063504891
+## 771      15 14.432470479
+## 772      14 14.432470479
+## 776      13 12.371515667
+## 778      11 11.721635739
+## 788      15 13.216701100
+## 789      15 14.432470479
+## 794      14 12.124459703
+## 795      17 16.369897309
+## 798      13 12.124459703
+## 803      12 11.474579776
+## 804      12 10.908690325
+## 820      12 12.247987685
+## 828       7  5.694539304
+## 830      11  9.094791476
+## 833      12 11.279274270
+## 836       0  0.005786795
+## 838      14 13.216701100
+## 842      11 11.155746288
+## 843       9  9.816448928
+## 847      11 11.032218307
+## 849       8  8.126078061
+## 851       9  9.939976910
+## 852      15 14.308942497
+## 861       8  8.002550080
+## 867      12 11.279274270
+## 875      10  8.971263495
+## 877      11  9.939976910
+## 880       8  6.786780701
+## 882      10  9.537152946
+## 884       9  8.724207531
+## 885      10  8.847735513
+## 889      10  8.971263495
+## 890       9  8.847735513
+## 897      13 12.495043649
+## 900      13 13.216701100
+## 901      11 11.155746288
+## 904       9  9.094791476
+## 909       8  5.941595268
+## 912      16 16.369897309
+## 913      15 14.432470479
+## 916       8  7.631966134
+## 917      10  9.816448928
+## 922      14 14.308942497
+## 924       9  8.568439530
+## 926       9  9.692920946
+## 931      10 10.908690325
+## 935      10  9.939976910
+## 936      11 10.908690325
+## 940      12 11.279274270
+## 944      11 10.187032873
+## 946      13 13.216701100
+## 951      13 14.308942497
+## 954      10 12.722589173
+## 956      10  9.094791476
+## 957      10  9.094791476
+## 959       0  0.005786795
+## 960      10  9.218319458
+## 961       9 10.063504891
+## 963       0 -0.364797150
+## 968       7  4.602297907
+## 975       9  9.939976910
+## 978       7  7.631966134
+## 983       8  5.818067286
+## 985      10  9.692920946
+## 989      14 13.216701100
+## 991      17 17.709194669
+## 1000     10  9.939976910
+## 1002     18 18.801436066
+## 1004     11  9.816448928
+## 1007     15 14.432470479
+## 1008     11 10.629394342
+## 1010     12 11.845163721
+## 1013     18 17.956250633
+## 1018      9  9.413624964
+## 1024     12 11.032218307
+## 1027     12 11.032218307
+## 1028      9  7.755494116
+## 1033      0  6.786780701
+## 1036      0  6.383956737
+## 1037     15 17.338610724
+## 1044     11 11.032218307
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RMSE3 <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean}\NormalTok{(((modelEval3}\OperatorTok{$}\NormalTok{Actual }\OperatorTok{-}\StringTok{ }\NormalTok{modelEval3}\OperatorTok{$}\NormalTok{Predicted)}\OperatorTok{^}\DecValTok{2}\NormalTok{)))}
+\NormalTok{RMSE3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.508199
+\end{verbatim}
+
+\#Utilizamos KNN
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indxEntrena <-}\StringTok{ }\KeywordTok{createDataPartition}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ DataStudents}\OperatorTok{$}\NormalTok{school, }\DataTypeTok{p =} \FloatTok{0.7}\NormalTok{, }\DataTypeTok{list =} \OtherTok{FALSE}\NormalTok{)}
+
+\NormalTok{SP_entrena <-}\StringTok{ }\NormalTok{DataStudents[indxEntrena,]}
+\NormalTok{SP_test <-}\StringTok{ }\NormalTok{DataStudents[}\OperatorTok{-}\NormalTok{indxEntrena,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SP_knnEntrenado <-}\StringTok{ }\KeywordTok{train}\NormalTok{(G3 }\OperatorTok{~}\StringTok{ }\NormalTok{., }
+                \DataTypeTok{data =}\NormalTok{ SP_entrena, }
+                \DataTypeTok{method =} \StringTok{"knn"}\NormalTok{,  }
+                \DataTypeTok{tuneLength =} \DecValTok{30}
+\NormalTok{                )}
+
+\KeywordTok{class}\NormalTok{(SP_knnEntrenado)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "train"         "train.formula"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SP_knnEntrenado}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## k-Nearest Neighbors 
+## 
+## 732 samples
+##  30 predictor
+## 
+## No pre-processing
+## Resampling: Bootstrapped (25 reps) 
+## Summary of sample sizes: 732, 732, 732, 732, 732, 732, ... 
+## Resampling results across tuning parameters:
+## 
+##   k   RMSE      Rsquared   MAE     
+##    5  1.744716  0.8046827  1.135085
+##    7  1.728501  0.8092383  1.117333
+##    9  1.710905  0.8149930  1.102018
+##   11  1.698693  0.8197293  1.094167
+##   13  1.695486  0.8223976  1.093529
+##   15  1.694620  0.8244359  1.093431
+##   17  1.700288  0.8254073  1.099112
+##   19  1.699725  0.8278058  1.099696
+##   21  1.704781  0.8290215  1.105952
+##   23  1.708735  0.8302372  1.108414
+##   25  1.713274  0.8316909  1.108419
+##   27  1.717499  0.8333303  1.110293
+##   29  1.720621  0.8350617  1.112153
+##   31  1.726527  0.8360443  1.115929
+##   33  1.734398  0.8367846  1.120528
+##   35  1.743483  0.8370933  1.126382
+##   37  1.753508  0.8369868  1.132578
+##   39  1.767263  0.8361201  1.140193
+##   41  1.778600  0.8357985  1.146863
+##   43  1.790242  0.8349572  1.153335
+##   45  1.797751  0.8354534  1.158686
+##   47  1.808412  0.8350025  1.165236
+##   49  1.819112  0.8341725  1.172919
+##   51  1.830318  0.8329485  1.179779
+##   53  1.841506  0.8316911  1.187141
+##   55  1.852481  0.8311574  1.194171
+##   57  1.862319  0.8309209  1.200157
+##   59  1.873585  0.8303551  1.207093
+##   61  1.881544  0.8303087  1.213302
+##   63  1.892511  0.8297617  1.218929
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was k = 15.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(SP_knnEntrenado) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MachineLearning_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SP_knnPrediccion <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(SP_knnEntrenado, }\DataTypeTok{newdata =}\NormalTok{ SP_test )}
+
+
+\NormalTok{modelEval4 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (SP_test}\OperatorTok{$}\NormalTok{G3, SP_knnPrediccion) }
+\KeywordTok{colnames}\NormalTok{ (modelEval4) <-}\StringTok{ }\KeywordTok{c}\NormalTok{ (}\StringTok{'Actual'}\NormalTok{, }\StringTok{'Predicted'}\NormalTok{) }
+\NormalTok{modelEval4 <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{ (modelEval4)}
+\NormalTok{modelEval4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Actual Predicted
+## 1        6  6.666667
+## 2       15 14.937500
+## 3       11 12.684211
+## 4       19 17.062500
+## 5       16 15.526316
+## 6       14 14.375000
+## 7       10 10.058824
+## 8       16 15.437500
+## 9       12 13.466667
+## 10      15 15.562500
+## 11      11 11.800000
+## 12      11 10.562500
+## 13      11  9.000000
+## 14      18 17.176471
+## 15       9 10.266667
+## 16       6  9.277778
+## 17      14 15.235294
+## 18      11 10.352941
+## 19      10  9.400000
+## 20      15 15.133333
+## 21       9 10.166667
+## 22      11 10.200000
+## 23       9 10.058824
+## 24       9 10.500000
+## 25      12 12.866667
+## 26      16 16.187500
+## 27      10 10.933333
+## 28      10  7.562500
+## 29       5  7.647059
+## 30      12 11.562500
+## 31      15 15.187500
+## 32      14 13.444444
+## 33       6  8.333333
+## 34      16 14.933333
+## 35      19 17.200000
+## 36      10  7.411765
+## 37      13 12.250000
+## 38      15 15.250000
+## 39      13 11.666667
+## 40       9  7.062500
+## 41      18 16.666667
+## 42       0  0.000000
+## 43      12 11.437500
+## 44      15 16.133333
+## 45       0  7.647059
+## 46      11 11.250000
+## 47      13 14.312500
+## 48      11 10.625000
+## 49       0  5.333333
+## 50      10  9.375000
+## 51      12 11.235294
+## 52       0  3.176471
+## 53       0  0.000000
+## 54      10 10.529412
+## 55       7  5.866667
+## 56       0  5.400000
+## 57      10 11.800000
+## 58      11 12.736842
+## 59       9  9.631579
+## 60       8 10.000000
+## 61      12 11.533333
+## 62       9  6.684211
+## 63       8  8.600000
+## 64      14 14.266667
+## 65       6  7.600000
+## 66      10 10.437500
+## 67       7  8.294118
+## 68      13 11.133333
+## 69      10 10.117647
+## 70      13 12.625000
+## 71      14 12.187500
+## 72       9 10.500000
+## 73      10 10.266667
+## 74       0  0.000000
+## 75       5  7.400000
+## 76       8  5.466667
+## 77      10  9.187500
+## 78       8  8.200000
+## 79       8  8.842105
+## 80      13 13.500000
+## 81      11 11.588235
+## 82       0  8.263158
+## 83      12 13.352941
+## 84       0  8.000000
+## 85      10 10.250000
+## 86       0  0.000000
+## 87       9  9.588235
+## 88      11 11.800000
+## 89      14 14.631579
+## 90      10 10.705882
+## 91       9 10.000000
+## 92      10 11.666667
+## 93      12 12.700000
+## 94      19 17.733333
+## 95      12 12.200000
+## 96      14 14.750000
+## 97      11 10.882353
+## 98      15 15.687500
+## 99       8  9.400000
+## 100     10 11.764706
+## 101     14 13.937500
+## 102     12 13.500000
+## 103      0  7.400000
+## 104     11 11.466667
+## 105     11 10.600000
+## 106     15 14.875000
+## 107     11 10.950000
+## 108      9 10.105263
+## 109     14 14.562500
+## 110      8  8.705882
+## 111     13 13.266667
+## 112     17 15.312500
+## 113     15 15.400000
+## 114     15 14.266667
+## 115     13 11.333333
+## 116      8  8.894737
+## 117     11 12.800000
+## 118     10 10.611111
+## 119     16 16.875000
+## 120     12 12.750000
+## 121     10 11.368421
+## 122     15 16.111111
+## 123     13 13.187500
+## 124     15 15.277778
+## 125     14 15.444444
+## 126      7  7.647059
+## 127      5  7.375000
+## 128     10  9.687500
+## 129      6  7.600000
+## 130     13 12.733333
+## 131     14 14.588235
+## 132     13 12.500000
+## 133     14 13.176471
+## 134     11 11.333333
+## 135     12 13.466667
+## 136     13 13.588235
+## 137     12 12.000000
+## 138     10 10.750000
+## 139     11 10.533333
+## 140     17 17.294118
+## 141     13 13.166667
+## 142     12 13.466667
+## 143     16 14.882353
+## 144     10 13.500000
+## 145     11 12.437500
+## 146     11 11.200000
+## 147      9 10.000000
+## 148     11 12.000000
+## 149     13 12.608696
+## 150     12 11.736842
+## 151     10  9.733333
+## 152     13 14.200000
+## 153     12 13.263158
+## 154     12 12.631579
+## 155     13 13.368421
+## 156     16 16.200000
+## 157     12 13.111111
+## 158     10 10.500000
+## 159     14 14.000000
+## 160     11 11.600000
+## 161     13 12.833333
+## 162     11 11.888889
+## 163     11 11.400000
+## 164     11  9.000000
+## 165     13 12.533333
+## 166     11 11.375000
+## 167     11 11.941176
+## 168     10 10.666667
+## 169      9  8.933333
+## 170     11 10.944444
+## 171     13 13.823529
+## 172     13 13.533333
+## 173     11 10.800000
+## 174      8  9.812500
+## 175      1 10.600000
+## 176      9  8.944444
+## 177     10  9.800000
+## 178      8  9.000000
+## 179     13 12.777778
+## 180     18 16.555556
+## 181     13 13.588235
+## 182     11 10.000000
+## 183     14 11.666667
+## 184     11  9.941176
+## 185     14 12.368421
+## 186     13 12.315789
+## 187     12 12.529412
+## 188     12 10.733333
+## 189     11 10.777778
+## 190     13 11.466667
+## 191     13 13.375000
+## 192      8  9.222222
+## 193     12 12.000000
+## 194     13 13.473684
+## 195     12 11.187500
+## 196     16 16.000000
+## 197     17 17.125000
+## 198     11 10.187500
+## 199     12 13.533333
+## 200     13 13.333333
+## 201     12 12.823529
+## 202      7  9.266667
+## 203     10 10.937500
+## 204     11 11.411765
+## 205     14 15.000000
+## 206     12 11.470588
+## 207     15 13.888889
+## 208     13 12.250000
+## 209     17 15.411765
+## 210     11 10.312500
+## 211     14 11.777778
+## 212     12 11.600000
+## 213     12 11.611111
+## 214     13 13.368421
+## 215     15 14.125000
+## 216     16 15.562500
+## 217     12 12.250000
+## 218     13 13.411765
+## 219     14 12.411765
+## 220     18 17.647059
+## 221     14 13.133333
+## 222     15 14.764706
+## 223     15 14.937500
+## 224     13 13.875000
+## 225     11  9.117647
+## 226     11  9.250000
+## 227     17 15.750000
+## 228     17 15.294118
+## 229     13 12.933333
+## 230     11  9.937500
+## 231     15 15.062500
+## 232     10  9.000000
+## 233     15 15.800000
+## 234     14 13.266667
+## 235     13 11.904762
+## 236     14 13.705882
+## 237     15 13.705882
+## 238     16 14.000000
+## 239     12 10.631579
+## 240     15 14.176471
+## 241     17 15.437500
+## 242     11 10.750000
+## 243     17 15.312500
+## 244     14 12.176471
+## 245     11  9.562500
+## 246     13 12.500000
+## 247     11 11.375000
+## 248      7  3.600000
+## 249     14 13.062500
+## 250     11 10.352941
+## 251      9  9.823529
+## 252     14 13.250000
+## 253     11 10.210526
+## 254     11 10.500000
+## 255      9  9.600000
+## 256     15 14.111111
+## 257     10  9.823529
+## 258     14 12.777778
+## 259     14 13.666667
+## 260     13 13.238095
+## 261     12 12.823529
+## 262     11 10.470588
+## 263      8  5.437500
+## 264     10  7.000000
+## 265      8  8.000000
+## 266      9  9.066667
+## 267     10  9.733333
+## 268     13 13.812500
+## 269     14 13.652174
+## 270     16 16.222222
+## 271      9  9.368421
+## 272     18 16.117647
+## 273     17 16.222222
+## 274     10  9.722222
+## 275     10  9.312500
+## 276     16 15.187500
+## 277      0  5.866667
+## 278      8  8.466667
+## 279     10  8.450000
+## 280     16 14.588235
+## 281     16 14.875000
+## 282      8  9.352941
+## 283     13 13.000000
+## 284     10  8.750000
+## 285     13 13.400000
+## 286     10  8.125000
+## 287     13 12.705882
+## 288     10 10.058824
+## 289     12 13.136364
+## 290      9  8.375000
+## 291      9 10.000000
+## 292      8  7.941176
+## 293      8  8.875000
+## 294     11  9.687500
+## 295      9  9.705882
+## 296      7  4.944444
+## 297     11 10.875000
+## 298      8  6.866667
+## 299     10  8.210526
+## 300      7  8.500000
+## 301     14 13.444444
+## 302     18 17.437500
+## 303      0  0.000000
+## 304     11 11.150000
+## 305     15 14.850000
+## 306     13 12.529412
+## 307     16 16.066667
+## 308      9  9.000000
+## 309     16 16.062500
+## 310     11  6.666667
+## 311     10  9.444444
+## 312     16 15.000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RMSE4 <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean}\NormalTok{(((modelEval4}\OperatorTok{$}\NormalTok{Actual }\OperatorTok{-}\StringTok{ }\NormalTok{modelEval4}\OperatorTok{$}\NormalTok{Predicted)}\OperatorTok{^}\DecValTok{2}\NormalTok{)))}
+\NormalTok{RMSE4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.629101
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SP_ctrl <-}\StringTok{ }\KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method=}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{5}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SP_knnEntrenado2 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(G3 }\OperatorTok{~}\StringTok{ }\NormalTok{., }
+                \DataTypeTok{data =}\NormalTok{ SP_entrena, }
+                \DataTypeTok{method =} \StringTok{"knn"}\NormalTok{,  }
+                \DataTypeTok{tuneLength =} \DecValTok{5}\NormalTok{,}
+                \DataTypeTok{trControl =}\NormalTok{ SP_ctrl,}
+                \DataTypeTok{preProcess =} \KeywordTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{,}\StringTok{"scale"}\NormalTok{)}
+\NormalTok{                )}
+
+\NormalTok{SP_knnEntrenado2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## k-Nearest Neighbors 
+## 
+## 732 samples
+##  30 predictor
+## 
+## Pre-processing: centered (39), scaled (39) 
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 585, 586, 584, 587, 586 
+## Resampling results across tuning parameters:
+## 
+##   k   RMSE      Rsquared   MAE     
+##    5  2.998832  0.4336339  2.112168
+##    7  2.932023  0.4807193  2.021723
+##    9  2.905607  0.5031042  1.998206
+##   11  2.920600  0.5145465  1.985400
+##   13  2.905474  0.5421640  1.962760
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was k = 13.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SP_knnPrediccion <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(SP_knnEntrenado, }\DataTypeTok{newdata =}\NormalTok{ SP_test )}
+
+\NormalTok{SP_knnPrediccion }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  6.666667 14.937500 12.684211 17.062500 15.526316 14.375000 10.058824
+##   [8] 15.437500 13.466667 15.562500 11.800000 10.562500  9.000000 17.176471
+##  [15] 10.266667  9.277778 15.235294 10.352941  9.400000 15.133333 10.166667
+##  [22] 10.200000 10.058824 10.500000 12.866667 16.187500 10.933333  7.562500
+##  [29]  7.647059 11.562500 15.187500 13.444444  8.333333 14.933333 17.200000
+##  [36]  7.411765 12.250000 15.250000 11.666667  7.062500 16.666667  0.000000
+##  [43] 11.437500 16.133333  7.647059 11.250000 14.312500 10.625000  5.333333
+##  [50]  9.375000 11.235294  3.176471  0.000000 10.529412  5.866667  5.400000
+##  [57] 11.800000 12.736842  9.631579 10.000000 11.533333  6.684211  8.600000
+##  [64] 14.266667  7.600000 10.437500  8.294118 11.133333 10.117647 12.625000
+##  [71] 12.187500 10.500000 10.266667  0.000000  7.400000  5.466667  9.187500
+##  [78]  8.200000  8.842105 13.500000 11.588235  8.263158 13.352941  8.000000
+##  [85] 10.250000  0.000000  9.588235 11.800000 14.631579 10.705882 10.000000
+##  [92] 11.666667 12.700000 17.733333 12.200000 14.750000 10.882353 15.687500
+##  [99]  9.400000 11.764706 13.937500 13.500000  7.400000 11.466667 10.600000
+## [106] 14.875000 10.950000 10.105263 14.562500  8.705882 13.266667 15.312500
+## [113] 15.400000 14.266667 11.333333  8.894737 12.800000 10.611111 16.875000
+## [120] 12.750000 11.368421 16.111111 13.187500 15.277778 15.444444  7.647059
+## [127]  7.375000  9.687500  7.600000 12.733333 14.588235 12.500000 13.176471
+## [134] 11.333333 13.466667 13.588235 12.000000 10.750000 10.533333 17.294118
+## [141] 13.166667 13.466667 14.882353 13.500000 12.437500 11.200000 10.000000
+## [148] 12.000000 12.608696 11.736842  9.733333 14.200000 13.263158 12.631579
+## [155] 13.368421 16.200000 13.111111 10.500000 14.000000 11.600000 12.833333
+## [162] 11.888889 11.400000  9.000000 12.533333 11.375000 11.941176 10.666667
+## [169]  8.933333 10.944444 13.823529 13.533333 10.800000  9.812500 10.600000
+## [176]  8.944444  9.800000  9.000000 12.777778 16.555556 13.588235 10.000000
+## [183] 11.666667  9.941176 12.368421 12.315789 12.529412 10.733333 10.777778
+## [190] 11.466667 13.375000  9.222222 12.000000 13.473684 11.187500 16.000000
+## [197] 17.125000 10.187500 13.533333 13.333333 12.823529  9.266667 10.937500
+## [204] 11.411765 15.000000 11.470588 13.888889 12.250000 15.411765 10.312500
+## [211] 11.777778 11.600000 11.611111 13.368421 14.125000 15.562500 12.250000
+## [218] 13.411765 12.411765 17.647059 13.133333 14.764706 14.937500 13.875000
+## [225]  9.117647  9.250000 15.750000 15.294118 12.933333  9.937500 15.062500
+## [232]  9.000000 15.800000 13.266667 11.904762 13.705882 13.705882 14.000000
+## [239] 10.631579 14.176471 15.437500 10.750000 15.312500 12.176471  9.562500
+## [246] 12.500000 11.375000  3.600000 13.062500 10.352941  9.823529 13.250000
+## [253] 10.210526 10.500000  9.600000 14.111111  9.823529 12.777778 13.666667
+## [260] 13.238095 12.823529 10.470588  5.437500  7.000000  8.000000  9.066667
+## [267]  9.733333 13.812500 13.652174 16.222222  9.368421 16.117647 16.222222
+## [274]  9.722222  9.312500 15.187500  5.866667  8.466667  8.450000 14.588235
+## [281] 14.875000  9.352941 13.000000  8.750000 13.400000  8.125000 12.705882
+## [288] 10.058824 13.136364  8.375000 10.000000  7.941176  8.875000  9.687500
+## [295]  9.705882  4.944444 10.875000  6.866667  8.210526  8.500000 13.444444
+## [302] 17.437500  0.000000 11.150000 14.850000 12.529412 16.066667  9.000000
+## [309] 16.062500  6.666667  9.444444 15.000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelEval4 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (SP_test}\OperatorTok{$}\NormalTok{G3, SP_knnPrediccion) }
+\KeywordTok{colnames}\NormalTok{ (modelEval4) <-}\StringTok{ }\KeywordTok{c}\NormalTok{ (}\StringTok{'Actual'}\NormalTok{, }\StringTok{'Predicted'}\NormalTok{) }
+\NormalTok{modelEval4 <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{ (modelEval4)}
+\NormalTok{modelEval4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Actual Predicted
+## 1        6  6.666667
+## 2       15 14.937500
+## 3       11 12.684211
+## 4       19 17.062500
+## 5       16 15.526316
+## 6       14 14.375000
+## 7       10 10.058824
+## 8       16 15.437500
+## 9       12 13.466667
+## 10      15 15.562500
+## 11      11 11.800000
+## 12      11 10.562500
+## 13      11  9.000000
+## 14      18 17.176471
+## 15       9 10.266667
+## 16       6  9.277778
+## 17      14 15.235294
+## 18      11 10.352941
+## 19      10  9.400000
+## 20      15 15.133333
+## 21       9 10.166667
+## 22      11 10.200000
+## 23       9 10.058824
+## 24       9 10.500000
+## 25      12 12.866667
+## 26      16 16.187500
+## 27      10 10.933333
+## 28      10  7.562500
+## 29       5  7.647059
+## 30      12 11.562500
+## 31      15 15.187500
+## 32      14 13.444444
+## 33       6  8.333333
+## 34      16 14.933333
+## 35      19 17.200000
+## 36      10  7.411765
+## 37      13 12.250000
+## 38      15 15.250000
+## 39      13 11.666667
+## 40       9  7.062500
+## 41      18 16.666667
+## 42       0  0.000000
+## 43      12 11.437500
+## 44      15 16.133333
+## 45       0  7.647059
+## 46      11 11.250000
+## 47      13 14.312500
+## 48      11 10.625000
+## 49       0  5.333333
+## 50      10  9.375000
+## 51      12 11.235294
+## 52       0  3.176471
+## 53       0  0.000000
+## 54      10 10.529412
+## 55       7  5.866667
+## 56       0  5.400000
+## 57      10 11.800000
+## 58      11 12.736842
+## 59       9  9.631579
+## 60       8 10.000000
+## 61      12 11.533333
+## 62       9  6.684211
+## 63       8  8.600000
+## 64      14 14.266667
+## 65       6  7.600000
+## 66      10 10.437500
+## 67       7  8.294118
+## 68      13 11.133333
+## 69      10 10.117647
+## 70      13 12.625000
+## 71      14 12.187500
+## 72       9 10.500000
+## 73      10 10.266667
+## 74       0  0.000000
+## 75       5  7.400000
+## 76       8  5.466667
+## 77      10  9.187500
+## 78       8  8.200000
+## 79       8  8.842105
+## 80      13 13.500000
+## 81      11 11.588235
+## 82       0  8.263158
+## 83      12 13.352941
+## 84       0  8.000000
+## 85      10 10.250000
+## 86       0  0.000000
+## 87       9  9.588235
+## 88      11 11.800000
+## 89      14 14.631579
+## 90      10 10.705882
+## 91       9 10.000000
+## 92      10 11.666667
+## 93      12 12.700000
+## 94      19 17.733333
+## 95      12 12.200000
+## 96      14 14.750000
+## 97      11 10.882353
+## 98      15 15.687500
+## 99       8  9.400000
+## 100     10 11.764706
+## 101     14 13.937500
+## 102     12 13.500000
+## 103      0  7.400000
+## 104     11 11.466667
+## 105     11 10.600000
+## 106     15 14.875000
+## 107     11 10.950000
+## 108      9 10.105263
+## 109     14 14.562500
+## 110      8  8.705882
+## 111     13 13.266667
+## 112     17 15.312500
+## 113     15 15.400000
+## 114     15 14.266667
+## 115     13 11.333333
+## 116      8  8.894737
+## 117     11 12.800000
+## 118     10 10.611111
+## 119     16 16.875000
+## 120     12 12.750000
+## 121     10 11.368421
+## 122     15 16.111111
+## 123     13 13.187500
+## 124     15 15.277778
+## 125     14 15.444444
+## 126      7  7.647059
+## 127      5  7.375000
+## 128     10  9.687500
+## 129      6  7.600000
+## 130     13 12.733333
+## 131     14 14.588235
+## 132     13 12.500000
+## 133     14 13.176471
+## 134     11 11.333333
+## 135     12 13.466667
+## 136     13 13.588235
+## 137     12 12.000000
+## 138     10 10.750000
+## 139     11 10.533333
+## 140     17 17.294118
+## 141     13 13.166667
+## 142     12 13.466667
+## 143     16 14.882353
+## 144     10 13.500000
+## 145     11 12.437500
+## 146     11 11.200000
+## 147      9 10.000000
+## 148     11 12.000000
+## 149     13 12.608696
+## 150     12 11.736842
+## 151     10  9.733333
+## 152     13 14.200000
+## 153     12 13.263158
+## 154     12 12.631579
+## 155     13 13.368421
+## 156     16 16.200000
+## 157     12 13.111111
+## 158     10 10.500000
+## 159     14 14.000000
+## 160     11 11.600000
+## 161     13 12.833333
+## 162     11 11.888889
+## 163     11 11.400000
+## 164     11  9.000000
+## 165     13 12.533333
+## 166     11 11.375000
+## 167     11 11.941176
+## 168     10 10.666667
+## 169      9  8.933333
+## 170     11 10.944444
+## 171     13 13.823529
+## 172     13 13.533333
+## 173     11 10.800000
+## 174      8  9.812500
+## 175      1 10.600000
+## 176      9  8.944444
+## 177     10  9.800000
+## 178      8  9.000000
+## 179     13 12.777778
+## 180     18 16.555556
+## 181     13 13.588235
+## 182     11 10.000000
+## 183     14 11.666667
+## 184     11  9.941176
+## 185     14 12.368421
+## 186     13 12.315789
+## 187     12 12.529412
+## 188     12 10.733333
+## 189     11 10.777778
+## 190     13 11.466667
+## 191     13 13.375000
+## 192      8  9.222222
+## 193     12 12.000000
+## 194     13 13.473684
+## 195     12 11.187500
+## 196     16 16.000000
+## 197     17 17.125000
+## 198     11 10.187500
+## 199     12 13.533333
+## 200     13 13.333333
+## 201     12 12.823529
+## 202      7  9.266667
+## 203     10 10.937500
+## 204     11 11.411765
+## 205     14 15.000000
+## 206     12 11.470588
+## 207     15 13.888889
+## 208     13 12.250000
+## 209     17 15.411765
+## 210     11 10.312500
+## 211     14 11.777778
+## 212     12 11.600000
+## 213     12 11.611111
+## 214     13 13.368421
+## 215     15 14.125000
+## 216     16 15.562500
+## 217     12 12.250000
+## 218     13 13.411765
+## 219     14 12.411765
+## 220     18 17.647059
+## 221     14 13.133333
+## 222     15 14.764706
+## 223     15 14.937500
+## 224     13 13.875000
+## 225     11  9.117647
+## 226     11  9.250000
+## 227     17 15.750000
+## 228     17 15.294118
+## 229     13 12.933333
+## 230     11  9.937500
+## 231     15 15.062500
+## 232     10  9.000000
+## 233     15 15.800000
+## 234     14 13.266667
+## 235     13 11.904762
+## 236     14 13.705882
+## 237     15 13.705882
+## 238     16 14.000000
+## 239     12 10.631579
+## 240     15 14.176471
+## 241     17 15.437500
+## 242     11 10.750000
+## 243     17 15.312500
+## 244     14 12.176471
+## 245     11  9.562500
+## 246     13 12.500000
+## 247     11 11.375000
+## 248      7  3.600000
+## 249     14 13.062500
+## 250     11 10.352941
+## 251      9  9.823529
+## 252     14 13.250000
+## 253     11 10.210526
+## 254     11 10.500000
+## 255      9  9.600000
+## 256     15 14.111111
+## 257     10  9.823529
+## 258     14 12.777778
+## 259     14 13.666667
+## 260     13 13.238095
+## 261     12 12.823529
+## 262     11 10.470588
+## 263      8  5.437500
+## 264     10  7.000000
+## 265      8  8.000000
+## 266      9  9.066667
+## 267     10  9.733333
+## 268     13 13.812500
+## 269     14 13.652174
+## 270     16 16.222222
+## 271      9  9.368421
+## 272     18 16.117647
+## 273     17 16.222222
+## 274     10  9.722222
+## 275     10  9.312500
+## 276     16 15.187500
+## 277      0  5.866667
+## 278      8  8.466667
+## 279     10  8.450000
+## 280     16 14.588235
+## 281     16 14.875000
+## 282      8  9.352941
+## 283     13 13.000000
+## 284     10  8.750000
+## 285     13 13.400000
+## 286     10  8.125000
+## 287     13 12.705882
+## 288     10 10.058824
+## 289     12 13.136364
+## 290      9  8.375000
+## 291      9 10.000000
+## 292      8  7.941176
+## 293      8  8.875000
+## 294     11  9.687500
+## 295      9  9.705882
+## 296      7  4.944444
+## 297     11 10.875000
+## 298      8  6.866667
+## 299     10  8.210526
+## 300      7  8.500000
+## 301     14 13.444444
+## 302     18 17.437500
+## 303      0  0.000000
+## 304     11 11.150000
+## 305     15 14.850000
+## 306     13 12.529412
+## 307     16 16.066667
+## 308      9  9.000000
+## 309     16 16.062500
+## 310     11  6.666667
+## 311     10  9.444444
+## 312     16 15.000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RMSE4 <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean}\NormalTok{(((modelEval4}\OperatorTok{$}\NormalTok{Actual }\OperatorTok{-}\StringTok{ }\NormalTok{modelEval4}\OperatorTok{$}\NormalTok{Predicted)}\OperatorTok{^}\DecValTok{2}\NormalTok{)))}
+\NormalTok{RMSE4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.629101
+\end{verbatim}
+
+\end{document}

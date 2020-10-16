@@ -1,0 +1,266 @@
+---
+title: "MachineLearning"
+author: "Mateo Atehortúa"
+date: "15/10/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+##Instalamos y Cargamos las librerias necesarias para realizar el procedimiento.
+
+```{r}
+library(tidyverse)
+library(magrittr)
+library(dplyr)
+library(ggplot2)
+library(caTools)
+
+
+library(rsample)
+library(caret)
+library(h2o)
+```
+
+## A través de la función read.csv, leemos los datos descargados para resolver el problema.
+
+```{r}
+
+DataStudents <- read.csv("Student-Complete.csv", sep = ";")
+
+```
+
+## Después de lo anterior utilizaremos algunas funciones para conocer los datos descargados.
+
+```{r}
+dim(DataStudents)
+```
+
+
+
+```{r}
+head(DataStudents)
+```
+
+```{r}
+
+ggplot(data = DataStudents, aes(x = G1, y = G2)) + labs(title = "Calificaciones Estudiantes", subtitle = "Respecto a la Escuela",
+                                                        x = "Primer Periodo", y = "Segundo Periodo", colour = "Escuela") +
+  geom_point(aes(color = school), size = 5, alpha = 0.7)
+
+```
+
+```{r}
+
+ggplot(data = DataStudents, aes(x = G1, y = G3)) + labs(title = "Calificaciones Estudiantes", subtitle = "Respecto a la Escuela",
+                                                        x = "Primer Periodo", y = "Final", colour = "Materia") +
+  geom_point(aes(color = school), size = 5, alpha = 0.7)
+
+```
+
+```{r}
+ggplot(data = DataStudents, aes(x = G2, y = G3)) + labs(title = "Calificaciones Estudiantes", subtitle = "Respecto a la Escuela",
+                                                        x = "Segundo Periodo", y = "Final", colour = "Materia") +
+  geom_point(aes(color = school), size = 5, alpha = 0.7)
+```
+
+
+## Entrenamiento del Modelo 
+
+```{r}
+
+sampleSplit <- sample.split(Y=DataStudents$G3, SplitRatio=0.7)
+trainSet <- subset(x = DataStudents, sampleSplit == TRUE)
+testSet <- subset(x = DataStudents, sampleSplit == FALSE)
+
+```
+
+
+## Corremos Regresión (Todas la variables)
+
+```{r}
+
+modelo1 <- lm(data = trainSet, G3 ~.)
+summary(modelo1)
+
+```
+
+```{r}
+
+modelResiduals <- as.data.frame(residuals(modelo1))
+
+ggplot(modelResiduals, aes(residuals(modelo1))) +
+  geom_histogram(fill='deepskyblue', color='black')
+
+```
+
+```{r}
+
+preds <- predict(modelo1, testSet)
+
+modelEval <- cbind (testSet$G3, preds) 
+colnames (modelEval) <- c ('Actual', 'Predicted') 
+modelEval <- as.data.frame (modelEval)
+modelEval
+
+```
+
+```{r}
+
+RMSE <- sqrt(mean(((modelEval$Actual - modelEval$Predicted)^2)))
+RMSE
+             
+```
+
+## Corremos Regresión (Algunas Variables)
+
+## Entrenamiento del Modelo 
+
+```{r}
+
+DataStudents2 <- select(DataStudents, c("schoolsup", "studytime", "paid", "famsup","G1", "G2","G3", "famrel", "activities", "absences" ))
+
+sampleSplit2 <- sample.split(Y=DataStudents2$G3, SplitRatio=0.7)
+trainSet2 <- subset(x = DataStudents2, sampleSplit == TRUE)
+testSet2 <- subset(x = DataStudents2, sampleSplit == FALSE)
+
+```
+
+
+```{r}
+modelo2 <- lm(data = trainSet2, G3 ~.)
+summary(modelo2)
+
+```
+
+```{r}
+preds2 <- predict(modelo2, testSet2)
+
+modelEval2 <- cbind (testSet2$G3, preds2) 
+colnames (modelEval2) <- c ('Actual', 'Predicted') 
+modelEval2 <- as.data.frame (modelEval2)
+modelEval2
+```
+
+```{r}
+
+RMSE2 <- sqrt(mean(((modelEval2$Actual - modelEval2$Predicted)^2)))
+RMSE2
+             
+```
+
+
+```{r}
+DataStudents3 <- select(DataStudents, c("paid","G1", "G2","G3"))
+
+sampleSplit3 <- sample.split(Y=DataStudents2$G3, SplitRatio=0.7)
+trainSet3 <- subset(x = DataStudents3, sampleSplit == TRUE)
+testSet3 <- subset(x = DataStudents3, sampleSplit == FALSE)
+
+```
+
+```{r}
+modelo3 <- lm(data = trainSet3, G3 ~ G1 + G2 + paid)
+summary(modelo3)
+```
+
+```{r}
+preds3 <- predict(modelo3, testSet3)
+
+modelEval3 <- cbind (testSet3$G3, preds3) 
+colnames (modelEval3) <- c ('Actual', 'Predicted') 
+modelEval3 <- as.data.frame (modelEval3)
+modelEval3
+```
+
+```{r}
+RMSE3 <- sqrt(mean(((modelEval3$Actual - modelEval3$Predicted)^2)))
+RMSE3
+```
+
+#Utilizamos KNN 
+
+```{r}
+indxEntrena <- createDataPartition(y = DataStudents$school, p = 0.7, list = FALSE)
+
+SP_entrena <- DataStudents[indxEntrena,]
+SP_test <- DataStudents[-indxEntrena,]
+
+```
+
+```{r}
+SP_knnEntrenado <- train(G3 ~ ., 
+                data = SP_entrena, 
+                method = "knn",  
+                tuneLength = 30
+                )
+
+class(SP_knnEntrenado)
+
+SP_knnEntrenado
+```
+
+```{r}
+
+ggplot(SP_knnEntrenado) + geom_point()
+
+```
+
+
+```{r}
+
+SP_knnPrediccion <- predict(SP_knnEntrenado, newdata = SP_test )
+
+
+modelEval4 <- cbind (SP_test$G3, SP_knnPrediccion) 
+colnames (modelEval4) <- c ('Actual', 'Predicted') 
+modelEval4 <- as.data.frame (modelEval4)
+modelEval4
+```
+```{r}
+RMSE4 <- sqrt(mean(((modelEval4$Actual - modelEval4$Predicted)^2)))
+RMSE4
+```
+
+```{r}
+
+SP_ctrl <- trainControl(method="cv", number = 5) 
+
+```
+
+```{r}
+SP_knnEntrenado2 <- train(G3 ~ ., 
+                data = SP_entrena, 
+                method = "knn",  
+                tuneLength = 5,
+                trControl = SP_ctrl,
+                preProcess = c("center","scale")
+                )
+
+SP_knnEntrenado2
+
+```
+
+```{r}
+
+SP_knnPrediccion <- predict(SP_knnEntrenado, newdata = SP_test )
+
+SP_knnPrediccion 
+  
+```
+
+```{r}
+
+modelEval4 <- cbind (SP_test$G3, SP_knnPrediccion) 
+colnames (modelEval4) <- c ('Actual', 'Predicted') 
+modelEval4 <- as.data.frame (modelEval4)
+modelEval4
+
+```
+
+```{r}
+RMSE4 <- sqrt(mean(((modelEval4$Actual - modelEval4$Predicted)^2)))
+RMSE4
+```
+
+
